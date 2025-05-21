@@ -12,7 +12,7 @@ Above all, I value the creative problem-solving aspect of engineering and the ch
   // TODO: perhaps steam integration for a currently playing section? maybe something like goodreads for currently reading?
   const personalIntroductionBodyText = `I'm an avid gamer. My primary platform is PC, but I also have a PS5 to play with my friends. I generally prefer single-player games (I'm always a sucker for a good story). Having said that, I'll play anything. If you've heard of a major game release, I've almost certainly played it. That also includes whichever Battle Royale or shooter my friends are playing. Right now it's Call Of Duty Warzone.
   My other primary hobby is reading. I don't do it as often as I would like, if I'm being honest, but once I'm hooked, I'll do nothing but read until I've consumed the entire book/series.
-  This is less of a hobby and more of just something I do as part of my daily routine, but I enjoy going to the gym quite a bit, I lift 6 days a week. It's mostly just to keep myself in some semblance on decent shape `;
+  This is less of a hobby and more of just something I do as part of my daily routine, but I enjoy going to the gym quite a bit, I lift 6 days a week. It's mostly just to keep myself in some semblance of decent shape `;
 
   const selectButtonOptions = ["Professional", "Personal"];
 
@@ -35,9 +35,7 @@ Above all, I value the creative problem-solving aspect of engineering and the ch
         checked={isToggled}
         onChange={(e) => setIsToggled(e.value)}
       /> */}
-      <div
-        className={`${classes.aboutMeBody} animate__animated animate__bounce`}
-      >
+      <div className={classes.aboutMeBody}>
         {selectedOption === selectButtonOptions[0]
           ? professionalIntroductionBodyText
           : personalIntroductionBodyText}
