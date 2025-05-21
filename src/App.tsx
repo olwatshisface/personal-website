@@ -7,9 +7,11 @@ import LinksSection from "./components/LinksSection/LinksSection";
 function App() {
   return (
     <div className="App">
-      <AboutMeSection />
-      <SkillsSection />
-      <LinksSection />
+      <div className="mainContent">
+        <AboutMeSection />
+        <SkillsSection />
+        <LinksSection />
+      </div>
     </div>
   );
 }

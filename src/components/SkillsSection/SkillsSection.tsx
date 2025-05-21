@@ -13,7 +13,7 @@ const SkillsSection = () => {
   const skillsText =
     "Technologies I have used, as well as years of experience, starting from the most recent: \n";
   return (
-    <div className={classes.skillsSection}>
+    <div className="section">
       <div className={classes.skillsText}>{skillsText}</div>
       <div>{createSkillChips()}</div>
     </div>

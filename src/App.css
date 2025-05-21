@@ -2,6 +2,9 @@
   text-align: center;
   padding: 0px 20rem;
   white-space: pre-line;
+  background-color: #282c34;
+  height: 100vh;
+  color: #1c1f27;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -32,4 +35,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+div.section {
+  padding-bottom: 20px;
+}
+
+.mainContent {
+  background-color: #e1e3e1;
 }

@@ -13,7 +13,7 @@ const LinksSection = () => {
       );
     });
   };
-  return <div className={classes.linksSection}>{getLinks()}</div>;
+  return <div className="section">{getLinks()}</div>;
 };
 
 export default LinksSection;
