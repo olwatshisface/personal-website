@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classes from "./AboutMeSection.module.scss";
 import { SelectButton } from "primereact/selectbutton";
+import { CSSTransition } from "react-transition-group";
 
 const AboutMeSection = () => {
   const introductionHeaderText = `Hi there! I'm Ethan Crochet. \n `;
@@ -20,25 +21,42 @@ Above all, I value the creative problem-solving aspect of engineering and the ch
     selectButtonOptions[0]
   );
 
+  const nodeRef = useRef(null);
+
+  //SelectButton allows to you click the same option and twice, changing the selection to "nothing", this block catches that and makes it act as a "toggle" instead
+  useEffect(() => {
+    if (!(selectedOption === selectButtonOptions[0])) {
+      setSelectedOption(selectButtonOptions[1]);
+    } else {
+      setSelectedOption(selectButtonOptions[0]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedOption]);
   return (
     <div className="section">
       <div className={classes.aboutMeHeader}>{introductionHeaderText}</div>
 
       <SelectButton
         value={selectedOption}
-        onChange={(e) => setSelectedOption(e.value)}
+        onChange={(e) => {
+          setSelectedOption(e.value);
+        }}
         options={selectButtonOptions}
       />
-      {/* <ToggleButton
-        onLabel="Professional"
-        offLabel="Personal"
-        checked={isToggled}
-        onChange={(e) => setIsToggled(e.value)}
-      /> */}
       <div className={classes.aboutMeBody}>
-        {selectedOption === selectButtonOptions[0]
-          ? professionalIntroductionBodyText
-          : personalIntroductionBodyText}
+        {selectedOption === "Professional" ? (
+          professionalIntroductionBodyText
+        ) : (
+          <CSSTransition
+            in={!(selectedOption === "Professional")}
+            ref={nodeRef}
+            addEndListener={() => false}
+            key={"personalTextBody"}
+            classNames={"my-node"}
+          >
+            <>{personalIntroductionBodyText}</>
+          </CSSTransition>
+        )}
       </div>
     </div>
   );
