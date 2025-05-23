@@ -24,14 +24,14 @@ Above all, I value the creative problem-solving aspect of engineering and the ch
   const nodeRef = useRef(null);
 
   //SelectButton allows to you click the same option and twice, changing the selection to "nothing", this block catches that and makes it act as a "toggle" instead
-  useEffect(() => {
-    if (!(selectedOption === selectButtonOptions[0])) {
-      setSelectedOption(selectButtonOptions[1]);
-    } else {
-      setSelectedOption(selectButtonOptions[0]);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedOption]);
+  // useEffect(() => {
+  //   if (!(selectedOption === selectButtonOptions[0])) {
+  //     setSelectedOption(selectButtonOptions[1]);
+  //   } else {
+  //     setSelectedOption(selectButtonOptions[0]);
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [selectedOption]);
   return (
     <div className="section">
       <div className={classes.aboutMeHeader}>{introductionHeaderText}</div>
@@ -39,7 +39,9 @@ Above all, I value the creative problem-solving aspect of engineering and the ch
       <SelectButton
         value={selectedOption}
         onChange={(e) => {
-          setSelectedOption(e.value);
+          if (e.value && !(e.value === selectedOption)) {
+            setSelectedOption(e.value);
+          }
         }}
         options={selectButtonOptions}
       />
